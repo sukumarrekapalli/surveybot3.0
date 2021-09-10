@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+body {
+  background: #333;
+  font-family: "Open Sans", sans-serif;
+}
+
+.pen-title {
+  color: #FFFFFF;
+  margin-bottom: 0;
+  text-align: center;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.pen-description {
+  color: #FFFFFF;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-shadow: 1px 1px 0 #000;
+}
+.pen-description a {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.wrap {
+  max-width: 85.375rem;
+  margin: 0 auto;
+}
+
+.image-as-background {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.screen-reader-text {
+  height: auto;
+  width: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+}
+.screen-reader-text:hover, .screen-reader-text:active, .screen-reader-text:focus {
+  height: auto;
+  width: auto;
+  background-color: #000000;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #FFFFFF;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  left: 0.3125rem;
+  line-height: normal;
+  padding: 0.9375rem 1.4375rem 0.875rem;
+  text-decoration: none;
+  top: 0.3125rem;
+  z-index: 100000;
+}
+
+.form .chosen-container {
+  font-size: 1rem;
+}
+.form .chosen-container .chosen-single,
+.form .chosen-container .chosen-drop {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.form .chosen-container-active.chosen-with-drop .chosen-single,
+.form .chosen-container-active .chosen-choices {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.form .chosen-container-active .chosen-results .highlighted {
+  background: #21759b;
+}
+
+        
+    </style>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1 class="pen-title">Chosen: Multiple Dropdown</h1>
+        <p class="pen-description">A simple dropdown using <a href="https://harvesthq.github.io/chosen/">Chosen.js</a>. Find out more, by reading the Chosen <a href="https://harvesthq.github.io/chosen/options.html">options API</a>.</p>
+    
+        <!-- Begin Multiple Dropdown -->
+        <form class="form" id="foo_form">
+            <label for="foo_select" class="screen-reader-text">Click to select an option</label>
+            <select id="foo_select" class="dropdown" form="foo_form" multiple data-placeholder="Click to select an option...">
+                <option value="null">First option</option>
+                <option value="null">Second option</option>
+                <option value="null">Third option</option>
+                <option value="null">Fourth option</option>
+                <option value="null">Fifth option</option>
+            </select>
+        </form>
+        <!-- End Multiple Dropdown -->
+    
+    </div><!-- .wrap -->
+    <script>
+        /**
+ * Chosen: Multiple Dropdown
+ */
+window.WDS_Chosen_Multiple_Dropdown = {};
+( function( window, $, that ) {
+
+	// Constructor.
+	that.init = function() {
+		that.cache();
+
+		if ( that.meetsRequirements ) {
+			that.bindEvents();
+		}
+	};
+
+	// Cache all the things.
+	that.cache = function() {
+		that.$c = {
+			window: $(window),
+			theDropdown: $( '.dropdown' ),
+		};
+	};
+
+	// Combine all events.
+	that.bindEvents = function() {
+		that.$c.window.on( 'load', that.applyChosen );
+	};
+
+	// Do we meet the requirements?
+	that.meetsRequirements = function() {
+		return that.$c.theDropdown.length;
+	};
+
+	// Apply the Chosen.js library to a dropdown.
+	// https://harvesthq.github.io/chosen/options.html
+	that.applyChosen = function() {
+		that.$c.theDropdown.chosen({
+			inherit_select_classes: true,
+			width: '300px',
+		});
+	};
+
+	// Engage!
+	$( that.init );
+
+})( window, jQuery, window.WDS_Chosen_Multiple_Dropdown );
+        </script>
+</body>
+</html>
